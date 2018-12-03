@@ -13,7 +13,9 @@ Page({
     address:'',
     total:0,
     product_ids:[],
-    product_numers:[]
+    product_numers:[],
+
+    products_infor:[]
   },
 
   /**
@@ -119,6 +121,7 @@ Page({
           var products = that.data.product_ids;
           let current = Bmob.User.current();
           var userid = current.objectId;
+          var product = that.data.products_infor;
 
           const relation = Bmob.Relation('products'); // 需要关联的表
           const relID = relation.add(products);
@@ -132,6 +135,7 @@ Page({
           query.set("state", "待发货");
           query.set("products", relID);
           query.set("parent", poiID);
+          query.set("desc", product[0].product.name);
           query.set("address", poiID_address);
           query.save().then(res => {
             console.log(res);

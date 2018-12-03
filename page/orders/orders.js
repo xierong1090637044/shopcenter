@@ -7,8 +7,6 @@ Page({
     have_order_dis:"none",
     no_order_dis:"none",
 
-    options:'',
-
     limit:10
   },
 
@@ -59,23 +57,9 @@ Page({
         wx.hideLoading();
         that.setData({ no_order_dis: "block" });
       }else{
-        that.setData({ have_order_dis:"block"});
-        for (var i = 0; i < orders.length; i++) {
-          const query = Bmob.Query('orders');
-          query.field('products', res[i].objectId);
-          query.relation('products').then(res => {
-            orders[index]["products"] = res.results;
-
-            if (index == (i - 1)) {
-              wx.hideLoading();
-              console.log(orders);
-              that.setData({ orders: orders });
-            }
-            index++;
-          })
-        }
+        wx.hideLoading();
+        that.setData({ have_order_dis: "block", orders: orders});
       }
-
       
     })
   },

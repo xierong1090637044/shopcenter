@@ -10,7 +10,7 @@
           <view class='order_time'>{{item.createdAt}}</view>
         </view>
         <view class='orders_second'>
-           <text>{{item.products[0].name}}等</text>
+           <text>{{item.desc}}等</text>
            <text style='margin-left:10px'>共{{item.products.length}}商品</text>
         </view>
         <view class='orders_thrid'>￥{{item.pay_for}}</view>
