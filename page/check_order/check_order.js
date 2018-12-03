@@ -135,6 +135,7 @@ Page({
           query.set("state", "待发货");
           query.set("products", relID);
           query.set("parent", poiID);
+          query.set("length", product.length);
           query.set("desc", product[0].product.name);
           query.set("address", poiID_address);
           query.save().then(res => {

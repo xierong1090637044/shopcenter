@@ -51,6 +51,7 @@ Page({
     query.find().then(res => {
       var orders = res;
       var index = 0;
+      console.log(res);
 
       if(res.length == 0)
       {
@@ -58,7 +59,7 @@ Page({
         that.setData({ no_order_dis: "block" });
       }else{
         wx.hideLoading();
-        that.setData({ have_order_dis: "block", orders: orders});
+        that.setData({ have_order_dis: "block", orders: res});
       }
       
     })
