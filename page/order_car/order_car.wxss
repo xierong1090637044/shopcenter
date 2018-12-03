@@ -1,6 +1,6 @@
 .page
 {
-  padding: 10px;
+  
 }
 /* 未选中的 背景样式 */
 checkbox .wx-checkbox-input{
@@ -26,8 +26,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
 }
 .header_item
 {
-  height: 80vh;
-  overflow: scroll;
+  height: 85vh;
+  margin-bottom: 5vh;
+  overflow-y: scroll;
+  padding: 10px;
 }
 
 .car_listitem
@@ -78,9 +80,9 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   justify-content: space-between;
   height: calc(10vh - 20px);
   line-height: calc(10vh - 20px);
-  margin-top: 10vh;
-  width: 100%;
+  width: calc(100% - 20px);
   font-size: 16px;
+  padding: 0 10px;
 }
 .pay_offstyle
 {

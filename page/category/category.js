@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    leftitems:["水果","蔬菜"],
-    select:"水果",
+    leftitems: ["蔬菜","水果"],
+    select:"",
 
     price: '',
     maskele: "none",
@@ -17,8 +17,22 @@ Page({
 
   /*** 生命周期函数--监听页面加载*/
   onLoad: function (options) {
+    console.log(options);
     that = this;
-    that.getlistdata("fruit");
+    switch (options.type) {
+      case "fruit":
+         that.setData({select:"水果"});
+         that.getlistdata("fruit");
+         break;
+      case "green":
+        that.setData({ select: "蔬菜" });
+        that.getlistdata("green");
+        break;
+      default:
+        that.setData({ select: "蔬菜" });
+        that.getlistdata("green");
+        break;
+    }
   },
 
   /*** 生命周期函数--监听页面初次渲染完成*/
@@ -61,7 +75,7 @@ Page({
     const query = Bmob.Query("products");
     query.equalTo("active", "==", true);
     query.equalTo("type", "==", data);
-    query.order("sort");
+    query.order("-offtake");
     query.find().then(res => {
       console.log(res);
       wx.hideLoading();
@@ -131,6 +145,7 @@ Page({
 
   //加入购物车功能
   add_ordercar: function (e) {
+    wx.showLoading({title: '加载中...'})
     var id = e.currentTarget.dataset.id;
     var price = e.currentTarget.dataset.price;
     let current = Bmob.User.current();
@@ -152,12 +167,16 @@ Page({
         query.set("number1", Number(that.data.number_jin))
         query.set("total", price)
         query.save().then(res => {
-          wx.showToast({
-            title: '添加成功',
-            icon: 'success',
-            duration: 1000
-          });
-          setTimeout(function () { that.hidden() }, 800)
+          
+          wx.hideLoading();
+          setTimeout(function () { 
+            that.hidden();
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 1000
+            });
+          }, 800)
         })
       } else {
         var number1 = res[0].number1;
@@ -168,12 +187,16 @@ Page({
           res.set('number1', number1 + Number(that.data.number_jin))
           res.set("total", total)
           res.save();
-          wx.showToast({
-            title: '添加成功',
-            icon: 'success',
-            duration: 1000
-          });
-          setTimeout(function () { that.hidden() }, 800)
+          
+          wx.hideLoading();
+          setTimeout(function () { 
+            that.hidden();
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 1000
+            });
+            }, 800)
         }).catch(err => {
           console.log(err)
         })

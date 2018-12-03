@@ -148,6 +148,7 @@ Page({
   //加入购物车功能
   add_ordercar:function(e)
   {
+    wx.showLoading({title: '加载中...'});
     var id = e.currentTarget.dataset.id;
     var price = e.currentTarget.dataset.price;
     let current = Bmob.User.current();
@@ -170,12 +171,16 @@ Page({
         query.set("number1", Number(that.data.number_jin))
         query.set("total", price)
         query.save().then(res => {
-          wx.showToast({
-            title: '添加成功',
-            icon: 'success',
-            duration: 1000
-          });
-          setTimeout(function () { that.hidden() }, 800)
+          
+          wx.hideLoading();
+          setTimeout(function () { 
+             that.hidden();
+              wx.showToast({
+                title: '添加成功',
+                icon: 'success',
+                duration: 1000
+              });
+            }, 800)
         })
       }else
       {
@@ -187,17 +192,35 @@ Page({
           res.set('number1', number1 + Number(that.data.number_jin))
           res.set("total", total)
           res.save();
-          wx.showToast({
-            title: '添加成功',
-            icon: 'success',
-            duration: 1000
-          });
-          setTimeout(function () { that.hidden()},800)
+          
+          wx.hideLoading();
+          setTimeout(function () { 
+            that.hidden();
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 1000
+            });
+            },800)
         }).catch(err => {
           console.log(err)
         })
       }
     });
+  },
+
+  goto_category:function(e)
+  {
+    var type1 = e.currentTarget.dataset.id;
+    switch (type1) {
+      case '水果': type1 = "fruit"
+        break;
+      case '蔬菜': type1 = "green"
+        break;
+    };
+    wx.reLaunch({
+      url: '../category/category?type='+type1,
+    })
   }
 
 })
