@@ -1,0 +1,50 @@
+<view class='content'>
+
+  <view>
+    <view class='peisong_infor'>配送信息</view>
+    <view class='peisong_view' wx:if='{{address !=null}}' bindtap='add_address'>
+        <view>
+           <view class='peisong_address'>
+              <i class="iconfont icon-didian"></i>
+              <text>{{address.address}}</text>
+           </view>
+           <view class='peisong_name'>
+              <i class="iconfont icon-dianhua"></i>
+              <text style='margin-right:5px'>{{address.phone}}</text>
+              <text>{{address.name}}先生/女士</text>
+           </view>
+        </view>
+        <view style='line-height:56px'>
+           <i class="iconfont icon-youbian"></i>
+        </view>
+    </view>
+    <view class='peisong_addaddressview' wx:else bindtap='add_address'>+ 新增收货地址</view>
+  </view>
+
+  <view>
+     <view class='peisong_infor'>订单信息</view>
+     <view wx:for="{{products_infor}}" wx:key="{{index}}">
+        <view>{{item.product.name}}</view>
+        <view class='peisong_productinfor'>
+            <view class='prisong_commentext'>{{item.product.desc}}</view>
+            <view class='prisong_commennumber'>x{{item.number1}}</view>
+            <view class='prisong_commonprice'>￥{{item.total}}</view>
+        </view>
+     </view>
+
+     <view class='prisong_border'></view>
+
+     <view class='prisong_shouldpay'>合计 ￥{{total}}</view>
+  </view>
+
+  <view class="peisong_bottom">
+     <view style='margin-left:10px'>
+        <text>还需支付</text>
+        <text style='font-size:18px;font-weight:bold '>￥{{total}}</text>
+     </view>
+     <view class='peisong_gotopay' wx:if='{{address !=null}}' bindtap='makeorder'>确认下单</view>
+     <view class='peisong_gotopay_noaddress' wx:elif='{{ total == 0}}'>确认下单</view>
+     <view class='peisong_gotopay_noaddress' wx:else>确认下单</view>
+  </view>
+
+</view>

@@ -1,0 +1,65 @@
+{
+  "pages": [
+    
+    "page/order_car/order_car",
+    "page/orders/orders",
+    "page/check_order/new_address/new_address",
+    "page/check_order/add_address/add_address",
+    "page/check_order/check_order",
+    "page/index/index",
+    "page/category/category",
+    "page/personcenter/personcenter"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "那个商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#d51616",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_s.png",
+        "pagePath": "page/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "images/categroy.png",
+        "selectedIconPath": "images/categroy_s.png",
+        "pagePath": "page/category/category",
+        "text": "分类"
+      },
+      {
+        "iconPath": "images/order_car.png",
+        "selectedIconPath": "images/order_car_s.png",
+        "pagePath": "page/order_car/order_car",
+        "text": "购物车"
+      },
+      {
+        "iconPath": "images/order.png",
+        "selectedIconPath": "images/order_s.png",
+        "pagePath": "page/orders/orders",
+        "text": "订单"
+      },
+      {
+        "iconPath": "images/personcenter.png",
+        "selectedIconPath": "images/personcenter_s.png",
+        "pagePath": "page/personcenter/personcenter",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

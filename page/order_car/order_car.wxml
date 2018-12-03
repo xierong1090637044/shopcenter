@@ -1,0 +1,38 @@
+<!--page/order_car/order_car.wxml-->
+<view class='page'>
+ <view class='header_item'>
+  <checkbox-group bindchange="checkboxChange">
+    <view wx:if="{{order == null}}">
+       <view class='car_gouwuche'><i class="iconfont icon-gouwuchekong gouwuche"></i></view>
+       <view class='car_noorder'>～您的购物车有点寂寞～</view>
+       <button class='car_gotoselect' bindtap='switchtab'>去挑选</button>
+    </view>
+
+    <view wx:else>
+    <view wx:for="{{order}}" wx:key='{{index}}' class='car_listitem' >
+      <view class='order_checkbox'> <checkbox value="{{item.objectId}}" checked='{{checked}}'/></view>
+      <view class='order_detail'>
+         <view>{{item.product.name}}</view>
+         <view class='car_desc'>{{item.product.desc}}</view>
+         <view class='order_singleprice'>
+            <view class='car_price'>{{item.product.price}}元/斤</view>
+            <view class='order_numberjj'>
+               <view bindtap='add_number' data-id='{{item.objectId}}' data-number1='{{item.number1}}' data-price ='{{item.product.price}}' ><i class="iconfont icon-chakangengduo"></i></view>
+               <view><input type='number' maxlength='3' value='{{item.number1}}' class='mask_input' bindinput='getnumber_jin' disabled='true'></input></view>
+               <view bindtap='reduce' data-id='{{item.objectId}}' data-number1='{{item.number1}}' data-price ='{{item.product.price}}'><i class="iconfont icon-jian"></i></view>
+            </view>
+          </view>
+      </view>
+    </view>
+    
+    </view>
+  </checkbox-group>
+ </view>
+
+ <view class='bottomEle'>
+      <view>应付合计：<text class='pay_offstyle'>￥{{pay_off}}</text></view>
+      <view class='goto_pay_no' wx:if="{{pay_off == 0}}">去结算</view>
+      <view class='goto_pay' wx:else bindtap='goto_pay'>去结算</view>
+  </view>
+
+</view>

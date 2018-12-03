@@ -1,0 +1,25 @@
+<view class='content' style='display:{{have_order_dis}}'>
+  <view wx:for='{{orders}}' wx:key="{{index}}" class='order_list'> 
+    <view class='order_state'>
+        <view>订单编号：{{item.objectId}}</view>
+        <view>{{item.state}}</view>
+    </view>
+    <view>
+        <view class='orders_one'>
+          <view class='order_address'>{{item.address.address}}</view>
+          <view class='order_time'>{{item.createdAt}}</view>
+        </view>
+        <view class='orders_second'>
+           <text>{{item.products[0].name}}等</text>
+           <text style='margin-left:10px'>共{{item.products.length}}商品</text>
+        </view>
+        <view class='orders_thrid'>￥{{item.pay_for}}</view>
+    </view>
+  </view>
+</view>
+
+<view style='display:{{no_order_dis}}'>
+     <view class='car_gouwuche'><i class="iconfont icon-info-1-copy gouwuche"></i></view>
+     <view class='car_noorder'>～您还没有下过单哦～</view>
+     <button class='car_gotoselect' bindtap='switchtab'>去下单</button>
+</view>

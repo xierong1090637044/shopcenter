@@ -1,0 +1,23 @@
+<view class='content'>
+   <scroll-view scroll-y="true" class='scrollview'>
+      <view wx:if="{{address!=null}}" class='address_notnull'>
+        <view wx:for="{{address}}" wx:key="{{index}}" class='address_item' data-id='{{item.objectId}}' bindtap='select_address'>
+          <view class='address_address'>{{item.address}}</view>
+          <view class='address_person'>
+             <view wx:if="{{index == 0}}" class='address_moren'>默认地址</view>
+             <view wx:else></view>
+             <text style='margin-right:20px'>{{item.phone}}</text>
+             <text>{{item.name}} 男士/女士</text>
+          </view>
+        </view>
+      </view>
+      <view wx:else class='address_null'>
+        <i class="iconfont icon-kulian1"></i>
+        <view>sorry,您还没有添加收货地址...</view>
+      </view>
+   </scroll-view>
+
+   <view class='address_add' bindtap='add_address'>+ 新增地址</view>
+</view>
+
+

@@ -1,0 +1,70 @@
+/* page/check_order/add_address/add_address.wxss */
+.content
+{
+  padding: 10px;
+}
+
+.address_null
+{
+  font-size: 16px;
+  text-align: center;
+  color: #8d8d8d;
+}
+.iconfont
+{
+  font-size: 40px;
+  color: #009FCC;
+}
+.address_add
+{
+  font-size: 18px;
+  text-align: center;
+  border-top: 1px solid#ddd;
+  padding: 15px 0;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  color: #009FCC;
+  background-color: #fff;
+  box-shadow: 0px -5px 10px #ddd
+}
+
+.address_item
+{
+  padding: 10px;
+  border-bottom: 1px solid#ddd;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 4px;
+}
+.address_address
+{
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.address_person
+{
+  font-size: 14px;
+  color: #8d8d8d;
+}
+.address_moren
+{
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid#009FCC;
+  color: #009FCC;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.address_notnull
+{
+  overflow: scroll;
+  height: calc(100vh - 60px);
+}
+.scrollview
+{
+  height: calc(100vh - 60px);
+}

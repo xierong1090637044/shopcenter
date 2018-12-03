@@ -1,0 +1,44 @@
+<view class='content'>
+<form bindsubmit="formSubmit">
+  <view class="section">
+    <view class="nameview">联系人</view>
+    <view class='nameinput'>
+       <input name="name" placeholder="送货时的称呼"  class='inputname' maxlength='6'/>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="nameview">手机号</view>
+    <view class='nameinput'>
+       <input name="phone" placeholder="请输入您的手机号"  class='inputname' maxlength='11' type='number'/>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="nameview">地址</view>
+    <view class='nameinput'>
+       <input name="address" placeholder="请输入收货地址"  class='inputname'/>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="nameview">门牌号</view>
+    <view class='nameinput'>
+       <input name="addressdetail" placeholder="如：6号楼1622"  class='inputname'/>
+    </view>
+  </view>
+
+  <view class="section_1">
+     <view class="nameview">
+        <checkbox-group name="checkbox" bindchange="checkboxChange">
+           <label><checkbox value="1" checked="{{checked}}" name="orginal"/></label>
+         </checkbox-group>
+     </view>
+     <view class="nameinput">设为默认地址</view>
+  </view>
+
+  <view >
+    <button form-type="submit" class="btn-area">保存</button>
+  </view>
+</form>
+</view>

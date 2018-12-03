@@ -1,0 +1,134 @@
+.page
+{
+  padding: 10px;
+}
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;
+   width: 40rpx;
+   height: 40rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #50d8c0;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;
+   width: 40rpx;
+   height: 40rpx;
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx;
+   color:#fff; 
+   background: transparent;
+}
+.header_item
+{
+  height: 80vh;
+  overflow: scroll;
+}
+
+.car_listitem
+{
+  display: flex;
+  margin-bottom: 10px;
+}
+.order_numberjj
+{
+  display: flex;
+}
+.order_singleprice
+{
+  display: flex;
+  justify-content: space-between
+}
+.order_checkbox
+{
+  width: 40px;
+  text-align: center;
+  line-height: 75px;
+}
+.order_detail
+{
+  font-size: 16px;
+  line-height: 25px;
+  width: calc(100% - 40px);
+}
+.car_desc
+{
+  font-size: 14px;
+  color: #8d8d8d;
+}
+.car_price
+{
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.iconfont
+{
+  color: #1585c6
+}
+
+.bottomEle
+{
+  display: flex;
+  justify-content: space-between;
+  height: calc(10vh - 20px);
+  line-height: calc(10vh - 20px);
+  margin-top: 10vh;
+  width: 100%;
+  font-size: 16px;
+}
+.pay_offstyle
+{
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+}
+.goto_pay_no
+{
+  background-color: #50d8c0;
+  width: 40%;
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0.2
+}
+.goto_pay
+{
+  background-color: #50d8c0;
+  width: 40%;
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.gouwuche
+{
+  font-size: 60px;
+  color: #50d8c0;
+  font-weight: bold;
+}
+.car_gouwuche
+{
+  text-align: center;
+}
+.car_noorder
+{
+  font-size: 14px;
+  text-align: center;
+  color: #8d8d8d
+}
+.car_gotoselect
+{
+  margin: 0 auto;
+  background-color: #50d8c0;
+  color: #fff;
+  font-size: 16px;
+  width: 40%;
+  border-radius: 8px;
+  margin-top: 40px;
+}

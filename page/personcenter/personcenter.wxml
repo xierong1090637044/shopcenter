@@ -1,0 +1,12 @@
+<!--第一部分-->
+<view style='display:{{display1}};padding-top:5px' class='frist'>
+  <button open-type='getUserInfo' class='loginbutton' plain='true' bindgetuserinfo="onGotUserInfo">登录</button>
+</view>
+<view style='display:{{display2}}' class='frist'>
+  <image src='{{user.avatar}}' class='avatar'></image>
+  <view class='name' bindtap='edit_infor'>
+    <view>
+      <text>{{user.username}}</text>
+    </view>
+  </view>
+</view>

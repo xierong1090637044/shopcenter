@@ -1,0 +1,39 @@
+.swiperview
+{
+  max-height: 100%;
+  height: 365rpx;
+}
+.slide-image
+{
+  width: 100%;
+  max-height: 100%;
+}
+.selectItemView
+{
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 0;
+}
+.product-Item
+{
+  width: calc(50% - 20px);
+  float: left;
+  padding: 10px;
+}
+.product_alllist
+{
+  float: left;
+  padding: 0 10px;
+  width:calc(100% - 20px);
+  background: #fff;
+  font-size: 12px;
+}
+.product_banner
+{
+  width: 100%;
+}
+.product_price
+{
+  font-size: 14px;
+  color: #d51616;
+}

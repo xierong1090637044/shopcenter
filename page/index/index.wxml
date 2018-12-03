@@ -1,0 +1,113 @@
+<!--input元素-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="商品名称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">请输入你要搜索的商品</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+    </view>
+</view>
+
+<!--swiper元素-->
+<swiper indicator-dots="true" autoplay="true" interval="2000" duration="1000" class='swiperview' indicator-active-color="#50d8c0" indicator-color="#fff">
+  <block wx:for="{{imgs}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item.bannerImg}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--选择菜单显示-->
+<view class="selectItemView">
+    <view class="weui-grids">
+            <block wx:for="{{selectItems}}" wx:key="{{index}}">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="{{item.icon.url}}" />
+                    <view class="weui-grid__label">{{item.name}}</view>
+                </navigator>
+            </block>
+    </view>
+</view>
+
+<!--推荐产品-->
+<view class="selectItemView" style='margin:10px 0 0'>
+    <view style='font-size:14px;margin:0 0 5px 10px'>
+      <text style='color:#d51616;font-weight:bold'>| </text>
+      <text>推荐产品</text>
+    </view>
+
+    <view class='product_alllist'>
+       <view wx:for="{{products}}" wx:key="{{index}}" class='product-Item' data-id='{{item.objectId}}' bindtap='gotodetail'>
+           <image src="{{item.banner.url}}" style='width:100%;height:150px'></image>
+           <view style='font-size:14px;'>{{item.name}}</view>
+           <view style='color:#666666;'>{{item.desc}}</view>
+           <view style='display:flex;justify-content: space-between'>
+             <view class='product_price'>￥{{item.price}}</view>
+             <view>销量：{{item.offtake}}</view>
+           </view>
+       </view>
+    </view>
+
+</view>
+
+<!--maskElemnet-->
+<view class='mask' style = "display:{{maskele}}" bindtap='hidden'></view>
+<view class='maskElemnet' style = "display:{{maskele}};" animation="{{animationData}}">
+   <image src='{{p_detail.long_banner.url}}' class="long_banner"></image>
+   <view class='long_productname'>商品名称：{{p_detail.name}}</view>
+   <view class='long_desc'>
+      <view>商品描述:</view>
+      <view style='color:#8d8d8d'>{{p_detail.long_desc}}</view>
+   </view>
+
+   <view class='mask_order'>
+       <view style='display:flex;justify-content:space-between'>
+          <view class='mask_price'>
+             <text>单价：</text>
+             <text style='color:#d51616'>{{p_detail.price}}元/斤</text>
+          </view>
+          <view class='mask_productway'><i class="iconfont icon-kuaidi"></i>送货上门</view>
+      </view>
+      <view style='display:flex;justify-content:space-between'>
+         <view class='mask_allapy'>
+          <text>需支付：</text>
+          <text style='color:#d51616'>{{allpay}}元</text>
+         </view>
+         <view class='mask_number'>
+            <view>斤数：</view>
+            <view style='display:flex'>
+               <view><input placeholder='斤数' type='number' maxlength='3' value='{{number_jin}}' class='mask_input' bindinput='getnumber_jin'></input></view>
+               <view>/斤</view>
+           </view>
+        </view>
+      </view>
+
+      <view class='mask_button'>
+           <view>
+              <button class='share_button'><i class="iconfont icon-pengyouquan"></i>分享有礼</button>
+           </view>
+           <view>
+              <button class='addcar_button' bindtap='add_ordercar' data-id='{{p_detail.objectId}}' data-price='{{p_detail.price}}'><i class="iconfont icon-gouwuchekong"></i>加入购物车</button>
+           </view>
+      </view>
+   </view>
+
+</view>
+
+
+<!--底线-->
+<view class="weui-footer">
+  <view class="weui-footer__text" style='margin:10px 0;float:left;width:100%'>﹋﹋﹋﹋我也是有底线的﹋﹋﹋﹋</view>
+</view>
