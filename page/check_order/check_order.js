@@ -176,6 +176,7 @@ Page({
   //发送模板消息
   sendmessageTmple:function(res)
   {
+    var address = that.data.address;
     let temp = {
       touser: "oUxY3w-fAaosEuc21uGeAJX66Nfs",
       template_id: "K9-6_Ayj4MLC2yvwY60-cq18tngJHAlqDfsOvv3D7a8",
@@ -191,7 +192,7 @@ Page({
           value: "送货上门"
         },
         customerInfo: {
-          value: that.data.address.address + that.data.address.name + that.data.address.phone
+          value: address.address + address.address_detail+address.name + address.phone
         },
         orderItemName: {
           value: "商品信息"
