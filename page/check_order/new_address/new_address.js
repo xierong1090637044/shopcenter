@@ -112,7 +112,8 @@ Page({
       (that.data.objectid != "") ? query.set('id', that.data.objectid) :null;
       query.set("name", name);
       query.set("phone", Number(phone));
-      query.set("address", address+addressdetail);
+      query.set("address", address);
+      query.set("address_detail", addressdetail);
       query.set("parent", poiID);
       if (checked) { query.set("default", 1); } else { query.set("default", 2);}
       query.save().then(res => {

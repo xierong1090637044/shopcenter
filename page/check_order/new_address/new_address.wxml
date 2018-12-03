@@ -24,7 +24,7 @@
   <view class="section">
     <view class="nameview">门牌号</view>
     <view class='nameinput'>
-       <input name="addressdetail" placeholder="如：6号楼1622"  class='inputname'/>
+       <input name="addressdetail" placeholder="如：6号楼1622"  class='inputname' value='{{detail.address_detail}}'/>
     </view>
   </view>
 

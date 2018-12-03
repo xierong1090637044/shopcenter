@@ -6,7 +6,7 @@
         <view>
            <view class='peisong_address'>
               <i class="iconfont icon-didian"></i>
-              <text>{{address.address}}</text>
+              <text>{{address.address}}{{address.address_detail}}</text>
            </view>
            <view class='peisong_name'>
               <i class="iconfont icon-dianhua"></i>

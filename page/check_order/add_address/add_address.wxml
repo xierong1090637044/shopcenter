@@ -3,7 +3,7 @@
       <view wx:if="{{address!=null}}" class='address_notnull'>
         <view wx:for="{{address}}" wx:key="{{index}}" class='address_item' data-id='{{item.objectId}}' bindtap='select_address'>
           <view class='address_address'>
-             {{item.address}}
+             {{item.address}}{{item.address_detail}}
              <i class="iconfont icon-fabu1 " style='display:{{edit_dis}};font-size: 12px !important;color: #009FCC; float:right'></i>
           </view>
           <view class='address_person'>
