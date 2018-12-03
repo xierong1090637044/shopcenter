@@ -8,11 +8,12 @@ Page({
   data: {
     leftitems: ["蔬菜","水果"],
     select:"",
+    limit:30,
 
     price: '',
     maskele: "none",
     number_jin: 1,
-    animationData: ''
+    animationData: '',
   },
 
   /*** 生命周期函数--监听页面加载*/
@@ -75,12 +76,24 @@ Page({
     const query = Bmob.Query("products");
     query.equalTo("active", "==", true);
     query.equalTo("type", "==", data);
+    query.limit(that.data.limit);
     query.order("-offtake");
     query.find().then(res => {
       console.log(res);
       wx.hideLoading();
       that.setData({detail:res})
     });
+  },
+
+  get_moreproduct:function()
+  {
+    that.setData({limit:that.data.limit + 30})
+    switch (that.data.select) {
+      case '水果': that.getlistdata("fruit")
+        break;
+      case '蔬菜': that.getlistdata("green")
+        break;
+    };
   },
 
   //点击显示详情页

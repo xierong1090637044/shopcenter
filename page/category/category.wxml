@@ -4,7 +4,7 @@
       <view class='cate_leftitems'>
           <view wx:for="{{leftitems}}" wx:key="{{index}}" class='{{select == item ? "addclass":""}}' bindtap='select' data-desc = "{{item}}">{{item}}</view>
       </view>
-      <view class='cate_rightitems'>
+      <scroll-view class='cate_rightitems' scroll-y="true" lower-threshold="0" bindscrolltolower="get_moreproduct">
          <view wx:for="{{detail}}" wx:key="{{index}}" class='cate_listitem' bindtap='godetail' data-id='{{item.objectId}}' >
             <view class='cate_itembanner'><image src='{{item.banner.url}}' class='cate_itembannerimg'></image></view>
             <view class='cate_itemdetail'>
@@ -18,7 +18,7 @@
           <view class="weui-footer">
              <view class="weui-footer__text" style='margin:10px 0;float:left;width:100%'>﹋﹋﹋﹋我也是有底线的﹋﹋﹋﹋   </view>
           </view>
-      </view>
+      </scroll-view>
    </view>
 </view>
 
