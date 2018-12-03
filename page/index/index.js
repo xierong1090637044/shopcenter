@@ -115,7 +115,7 @@ Page({
         timingFunction: 'ease',
       })
       that.animation = animation
-      animation.rotate("360").width("90%").left("5%").step()
+      animation.opacity("1").step()
 
       that.setData({ p_detail: res, allpay: res.price, price: res.price, animationData: animation.export()})
 
@@ -140,9 +140,9 @@ Page({
       timingFunction: 'ease',
     })
     that.animation = animation
-    animation.rotate("-360").width("10%").left("50%").opacity("0").step()
+    animation.opacity("0").step()
     that.setData({ animationData: animation.export() });
-    setTimeout(function () { that.setData({ maskele: "none", number_jin:1})},500);
+    setTimeout(function () { that.setData({ maskele: "none", number_jin:1})},300);
   },
 
   //加入购物车功能

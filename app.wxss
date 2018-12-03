@@ -68,11 +68,12 @@ page
 {
   position: fixed;
   top:10%;
-  width:0%;
-  left: 50%;
+  width:90%;
+  left: 5%;
   z-index: 101;
   border-radius: 10px;
   background-color: #fff;
+  opacity: 0
 }
 .long_banner
 {
