@@ -15,6 +15,11 @@
   font-size: 40px;
   color: #009FCC;
 }
+.icon-fabu
+{
+  font-size: 12px !important;
+  color: #009FCC;
+}
 .address_add
 {
   font-size: 18px;

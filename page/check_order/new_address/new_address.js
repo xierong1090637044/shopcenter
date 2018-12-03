@@ -7,14 +7,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checked:true
+    checked:true,
+    display1:"none",
+    display2:"none",
+    objectid:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    that = this;
+    var id = options.id;
+    if(id !=null)
+    {
+      that.setData({ display2: "flex", objectid:id});
+      that.getaddress_detail(id);
+    }else
+    {
+      that.setData({ display1: "block" })
+    }
   },
 
   /**
@@ -91,10 +104,12 @@ Page({
       })
     }else
     {
+      console.log(that.data.objectid)
       const pointer = Bmob.Pointer('_User');
       const poiID = pointer.set(userid);
 
       const query = Bmob.Query('address');
+      (that.data.objectid != "") ? query.set('id', that.data.objectid) :null;
       query.set("name", name);
       query.set("phone", Number(phone));
       query.set("address", address+addressdetail);
@@ -112,6 +127,35 @@ Page({
   checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   },
+
+  //得到地址详情
+  getaddress_detail:function(id)
+  {
+    const query = Bmob.Query('address');
+    query.get(id).then(res => {
+      console.log(res);
+      that.setData({detail:res})
+    })
+  },
+
+  //删除改地址
+  delete1:function()
+  {
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该地址',
+      success(res) {
+        if (res.confirm) {
+          const query = Bmob.Query('address');
+          query.destroy(that.data.objectid).then(res => {
+            wx.navigateBack({ delta: 1 })
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  }
 
   
 })

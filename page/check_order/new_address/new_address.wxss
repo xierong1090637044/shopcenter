@@ -25,6 +25,7 @@
 .nameinput
 {
   margin-left: 10px;
+  width: calc(100% - 72px);
 }
 .inputname
 {
@@ -43,4 +44,26 @@
   border-radius: unset;
   font-size: 16px;
   line-height: 50px;
+}
+
+.btn_group
+{
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width:100%;
+  font-size: 16px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-delete
+{
+  color: #fff;
+  background-color: #d51616;
+}
+.btn-save
+{
+  color: #fff;
+  background-color: #50d8c0;
 }

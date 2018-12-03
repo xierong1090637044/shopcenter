@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    options:"",
+    edit_dis:"none"
   },
 
   /**
@@ -15,7 +16,11 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    
+    console.log(options);
+    if(options.type == "edit")
+    {
+      that.setData({ options: "edit", edit_dis:"block"});
+    }
   },
 
   /**
@@ -60,15 +65,25 @@ Page({
   //选择地址事件
   select_address:function(e)
   {
+    console.log(e);
     var id = e.currentTarget.dataset.id;
-    console.log(id);
+    if(that.data.options == "edit")
+    {
+      wx.navigateTo({
+        url: '../new_address/new_address?id='+id,
+      })
+    }else{
+      var id = e.currentTarget.dataset.id;
+      console.log(id);
 
-    const query = Bmob.Query('address');
-    query.set('id', id) //需要修改的objectId
-    query.set('default', 1)
-    query.save().then(res => {
-      wx.navigateBack({ delta: 1 })
-    })
+      const query = Bmob.Query('address');
+      query.set('id', id) //需要修改的objectId
+      query.set('default', 1)
+      query.save().then(res => {
+        wx.navigateBack({ delta: 1 })
+      })
+    }
+    
   },
 
   //添加新地址
