@@ -7,12 +7,13 @@ Page({
     have_order_dis:"none",
     no_order_dis:"none",
 
-    options:''
+    options:'',
+
+    limit:10
   },
 
   /*** 生命周期函数--监听页面加载*/
   onLoad: function (options) {
-    console.log(options);
     that = this;
     that.getorderlist();
   },
@@ -47,6 +48,7 @@ Page({
     const query = Bmob.Query('orders');
     query.equalTo("parent", "==", userid);
     query.include("address","address");
+    query.limit(that.data.limit);
     query.order("-createdAt");
     query.find().then(res => {
       var orders = res;
@@ -83,5 +85,12 @@ Page({
       url: '../index/index',
     })
   },
+
+  //滚到到一定距离加载更多订单
+  get_moreorders:function(e)
+  {
+    that.setData({limit:that.data.limit+10});
+    that.getorderlist();
+  }
   
 })
