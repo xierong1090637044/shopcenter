@@ -53,7 +53,10 @@ Page({
 
   /*** 用户点击右上角分享*/
   onShareAppMessage: function () {
-
+    return {
+      title: '*营养生活每一天*',
+      path: '/page/index/index'
+    }
   },
 
   select:function(e)

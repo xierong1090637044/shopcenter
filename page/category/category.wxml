@@ -56,7 +56,7 @@
 
       <view class='mask_button'>
            <view>
-              <button class='share_button'><i class="iconfont icon-pengyouquan"></i>分享有礼</button>
+              <button class='share_button' open-type="share"><i class="iconfont icon-pengyouquan"></i>分享有礼</button>
            </view>
            <view>
               <button class='addcar_button' bindtap='add_ordercar' data-id='{{p_detail.objectId}}' data-price='{{p_detail.price}}'><i class="iconfont icon-gouwuchekong"></i>加入购物车</button>

@@ -14,7 +14,6 @@ Page({
   onLoad: function (options) {
     that = this;
     that.getswiperimage();
-    that.getproductslist();
   },
 
   /**
@@ -26,7 +25,7 @@ Page({
 
   /*** 生命周期函数--监听页面显示*/
   onShow: function () {
-    
+    that.getproductslist();
   },
 
   /*** 生命周期函数--监听页面隐藏*/
@@ -36,7 +35,10 @@ Page({
 
   /*** 用户点击右上角分享*/
   onShareAppMessage: function () {
-
+    return {
+      title: '*营养生活每一天*',
+      path: '/page/index/index'
+    }
   },
 
 
