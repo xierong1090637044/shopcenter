@@ -51,8 +51,9 @@ Page({
       query.order("default,-updatedAt");
       query.find().then(res => {
         wx.hideLoading();
-        that.setData({ address: res });
+        
         console.log(res);
+        (res[0] == null)? that.setData({ address: null }): that.setData({ address: res });
       });
   },
 

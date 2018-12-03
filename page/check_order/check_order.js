@@ -72,7 +72,7 @@ Page({
     query.order("default,-updatedAt");
     query.find().then(res => {
       wx.hideLoading();
-      that.setData({address:res[0]});
+      (res[0] == null) ? that.setData({ address: null }) : that.setData({ address: res[0] });
       that.get_orderdetail();
     });
   },
