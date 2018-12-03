@@ -42,8 +42,7 @@
         <text>还需支付</text>
         <text style='font-size:18px;font-weight:bold '>￥{{total}}</text>
      </view>
-     <view class='peisong_gotopay' wx:if='{{address !=null}}' bindtap='makeorder'>确认下单</view>
-     <view class='peisong_gotopay_noaddress' wx:elif='{{ total == 0}}'>确认下单</view>
+     <view class='peisong_gotopay' wx:if='{{address !=null && total != 0}}' bindtap='makeorder'>确认下单</view>
      <view class='peisong_gotopay_noaddress' wx:else>确认下单</view>
   </view>
 
