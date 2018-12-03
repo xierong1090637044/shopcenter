@@ -117,7 +117,6 @@ Page({
         if (res.confirm) {
           
           var products = that.data.product_ids;
-          console.log(products[0]);
           let current = Bmob.User.current();
           var userid = current.objectId;
 
@@ -136,7 +135,7 @@ Page({
           query.set("address", poiID_address);
           query.save().then(res => {
             console.log(res);
-            wx.reLaunch({url: '../orders/orders'});
+            
             var index = 0;
             var ids = app.globaldata.check_ids;
 
@@ -155,9 +154,10 @@ Page({
                     index++;
                   })
                 })
-                
               })
             }
+
+            wx.reLaunch({ url: '../orders/orders' });
 
           })
         } else if (res.cancel) {
@@ -166,11 +166,4 @@ Page({
       }
     })
   },
-
-  //在数据库里增加销量
-  modify_pronum:function()
-  {
-
-  },
-
 })
