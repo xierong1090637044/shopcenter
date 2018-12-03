@@ -1,5 +1,6 @@
 {
   "pages": [
+    "page/personcenter/personcenter",
     "page/index/index",
     "page/order_car/order_car",
     "page/orders/orders",
@@ -7,9 +8,7 @@
     "page/check_order/add_address/add_address",
     "page/check_order/check_order",
     
-    "page/category/category",
-    "page/personcenter/personcenter"
-    
+    "page/category/category"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -73,7 +73,7 @@ Page({
     query.find().then(res => {
       wx.hideLoading();
       (res[0] == null) ? that.setData({ address: null }) : that.setData({ address: res[0] });
-      that.get_orderdetail();
+      that.get_orderdetail();//得到订单详情
     });
   },
 
@@ -129,7 +129,7 @@ Page({
           const poiID = pointer.set(userid);
           const pointeraddress = Bmob.Pointer('address');
           const poiID_address = pointeraddress.set(that.data.address.objectId);
-      
+
           const query = Bmob.Query('orders');
           query.set("pay_for", that.data.total);
           query.set("state", "待发货");
@@ -140,7 +140,8 @@ Page({
           query.set("address", poiID_address);
           query.save().then(res => {
             console.log(res);
-            
+            that.sendmessageTmple(res);//发送模板消息
+
             var index = 0;
             var ids = app.globaldata.check_ids;
 
@@ -163,12 +164,51 @@ Page({
             }
 
             wx.reLaunch({ url: '../orders/orders' });
-
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
     })
+  },
+
+  //发送模板消息
+  sendmessageTmple:function(res)
+  {
+    let temp = {
+      touser: "oUxY3w-fAaosEuc21uGeAJX66Nfs",
+      template_id: "K9-6_Ayj4MLC2yvwY60-cq18tngJHAlqDfsOvv3D7a8",
+      data: {
+        first: {
+          value: "您好，收到新的订单信息",
+          color: "#c00"
+        },
+        tradeDateTime: {
+          value: res.createdAt
+        },
+        orderType: {
+          value: "送货上门"
+        },
+        customerInfo: {
+          value: that.data.address.address + that.data.address.name + that.data.address.phone
+        },
+        orderItemName: {
+          value: "商品信息"
+        },
+        orderItemData: {
+          value: that.data.products_infor[0].product.name + "等" + that.data.products_infor.length + "商品"
+        },
+        remark: {
+          value: "如果您十分钟内再次收到此信息，请及时处理。"
+        }
+      }
+    }
+
+    Bmob.notifyMsg(temp).then(function (response) {
+      console.log(response);
+    })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 })
