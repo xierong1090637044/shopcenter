@@ -8,7 +8,8 @@
     "page/check_order/new_address/new_address",
     "page/check_order/add_address/add_address",
     "page/check_order/check_order",
-    "page/category/category"
+    "page/category/category",
+    "page/orders/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

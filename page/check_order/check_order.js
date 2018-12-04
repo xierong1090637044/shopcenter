@@ -147,6 +147,7 @@ Page({
           (that.data.total < 100) ? query.set("extra_pay", that.data.psf_number):null;
           query.set("state", "待发货");
           query.set("products", relID);
+          query.set("products_infor", that.data.products_infor);
           query.set("parent", poiID);
           query.set("address_desc", that.data.address.address + that.data.address.address_detail);
           query.set("length", product.length);
