@@ -21,7 +21,7 @@
     <view class='peisong_addaddressview' wx:else bindtap='add_address'>+ 新增收货地址</view>
   </view>
 
-  <view>
+  <view style='max-height:60vh;overflow:scroll'>
      <view class='peisong_infor'>订单信息</view>
      <view wx:for="{{products_infor}}" wx:key="{{index}}">
         <view>{{item.product.name}}</view>
@@ -30,6 +30,11 @@
             <view class='prisong_commennumber'>x{{item.number1}}</view>
             <view class='prisong_commonprice'>￥{{item.total}}</view>
         </view>
+     </view>
+
+     <view class='peisong_productinfor' style='display:{{psf_dis}};margin:10px 0 0'>
+        <view class='prisong_commentext'>配送费</view>
+        <view class='prisong_commonprice'>￥{{psf_number}}</view>
      </view>
 
      <view class='prisong_border'></view>

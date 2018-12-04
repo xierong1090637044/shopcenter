@@ -15,7 +15,9 @@ Page({
     product_ids:[],
     product_numers:[],
 
-    products_infor:[]
+    products_infor:[],
+    psf_number:5,
+    psf_dis:"none"
   },
 
   /**
@@ -73,6 +75,7 @@ Page({
     query.find().then(res => {
       wx.hideLoading();
       (res[0] == null) ? that.setData({ address: null }) : that.setData({ address: res[0] });
+      
       that.get_orderdetail();//得到订单详情
     });
   },
@@ -93,11 +96,20 @@ Page({
         that.data.product_numers.push(res.number1);
         that.data.product_ids.push(res.product.objectId);
         index++;
-        if (i = index) {
-          that.setData({ products_infor: products_infor, total: that.data.total });
-        }
+
+        if(i == index){
+          if (that.data.total < 100) {
+            that.setData({ products_infor: products_infor, total: that.data.total + that.data.psf_number, psf_dis: "flex" });
+          } else {
+            that.setData({ products_infor: products_infor, total: that.data.total });
+          }
+        };
+
       })
-    }
+    };
+
+    
+
   },
 
   //添加地址
@@ -132,6 +144,7 @@ Page({
 
           const query = Bmob.Query('orders');
           query.set("pay_for", that.data.total);
+          (that.data.total < 100) ? query.set("extra_pay", that.data.psf_number):null;
           query.set("state", "待发货");
           query.set("products", relID);
           query.set("parent", poiID);
