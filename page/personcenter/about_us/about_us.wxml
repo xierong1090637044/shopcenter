@@ -1,0 +1,29 @@
+<!--pages/about_us/about_us.wxml-->
+<view class='main'>
+  <view class='title'>
+    <view class='image1'>
+      <image src='../../../images/logo.png' style='width:80px;height:80px;'></image>
+    </view>
+  </view>
+
+  <view class='select'>
+    <view class='selectitem appborder'>
+        <view>联系电话</view>
+        <view>15668245699</view>
+    </view>
+
+    <view class='selectitem appborder'>
+        <view>联系微信</view>
+        <view>yj15668245699</view>
+    </view>
+
+    <view class='selectitem'>
+       <view>意见反馈</view>
+       <view style='margin-top:15px;'>
+         <textarea class='textareaas' maxlength='150' bindinput="getinput" value='{{content}}'></textarea>
+         <button style='float:right' class='buttonas' bindtap='submit'>提交</button>
+       </view>
+    </view>
+  </view>
+
+</view>

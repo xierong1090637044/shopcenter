@@ -16,8 +16,8 @@
        <view><i class="iconfont icon-didian"></i><text>收货地址</text></view>
        <view><i class="iconfont icon-youbian"></i></view>
     </navigator>
-    <view class='listitem'>
+    <navigator url="/page/personcenter/about_us/about_us" class='listitem'>
        <view><i class="iconfont icon-wode"></i><text>联系我们</text></view>
        <view><i class="iconfont icon-youbian"></i></view>
-    </view>
+    </navigator>
 </view>

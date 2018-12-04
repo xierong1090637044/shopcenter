@@ -2,6 +2,7 @@
   "pages": [
     "page/index/index",
     "page/personcenter/personcenter",
+    "page/personcenter/about_us/about_us",
     "page/order_car/order_car",
     "page/orders/orders",
     "page/check_order/new_address/new_address",
