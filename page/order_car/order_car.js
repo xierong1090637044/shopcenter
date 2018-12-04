@@ -74,22 +74,19 @@ Page({
     var products_id = e.detail.value;
     var arr_total = [];
     var index = 0;
+    var sum = 0;
     that.setData({ pay_off: 0, products_id: products_id});
 
-    wx.showLoading({
-      title: '加载中...',
-    });
 
     for(var i =0;i<products_id.length;i++)
     {
       const query = Bmob.Query('order_car');
       query.get(products_id[i]).then(res => {
         arr_total.push(res.total);
+        sum = sum + res.total;
         index++;
         if(i == index)
         {
-          wx.hideLoading();
-          var sum = that.sum(arr_total);
           that.setData({ pay_off: sum })
         }
       })
@@ -158,16 +155,6 @@ Page({
     })
   },
 
-  //数组求和
-  sum:function(arr)
-  {
-    var s = 0;
-    for (var i = arr.length - 1; i >= 0; i--) {
-      s += Number(arr[i]);
-    }
-    return s;
-  },
-
   switchtab:function(){
     wx.switchTab({
       url: '../index/index',
@@ -177,11 +164,33 @@ Page({
   //点击去付款
   goto_pay:function()
   {
-    console.log(that.data.products_id);
+    console.log(that.data.pay_off);
     app.globaldata.check_ids = that.data.products_id;
-    wx.navigateTo({
-      url: '../check_order/check_order',
-    })
+    if(that.data.pay_off < 100)
+    {
+      wx.showModal({
+        title: '提示',
+        content: '配送金额低于100需收取配送费',
+        cancelText:"去添加",
+        confirmText:"继续",
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../check_order/check_order',
+            })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '../index/index',
+            })
+          }
+        }
+      })
+    }else{
+      wx.navigateTo({
+        url: '../check_order/check_order',
+      })
+    }
+    
   },
 
 })
