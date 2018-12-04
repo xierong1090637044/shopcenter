@@ -213,7 +213,7 @@ Page({
           value: "商品信息"
         },
         orderItemData: {
-          value: that.data.products_infor[0].product.name + "等" + that.data.products_infor.length + "商品"
+          value: that.data.products_infor[0].product.name + "等" + that.data.products_infor.length + "件商品"
         },
         remark: {
           value: "如果您十分钟内再次收到此信息，请及时处理。"

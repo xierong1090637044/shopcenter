@@ -128,65 +128,70 @@ Page({
   //加入购物车功能
   add_ordercar:function(e)
   {
-    wx.showLoading({title: '加载中...'});
-    var id = e.currentTarget.dataset.id;
-    var price = e.currentTarget.dataset.price;
     let current = Bmob.User.current();
-    var userid = current.objectId;
 
-    const query = Bmob.Query("order_car");
-    query.equalTo("product", "==", id);
-    query.equalTo("parent", "==", userid);
-    query.find().then(res => {
-      if(res.length == 0)
-      {
-        const pointer = Bmob.Pointer('_User')
-        const poiID = pointer.set(userid)
-        const pointer1 = Bmob.Pointer('products')
-        const poiID1 = pointer1.set(id)
+    if (current.islogin == "false" || current.islogin==null)
+    {
+      wx.showToast({title: '请先登录',icon:"none"});
+    }else{
+      wx.showLoading({ title: '加载中...' });
+      var id = e.currentTarget.dataset.id;
+      var price = e.currentTarget.dataset.price;
+      var userid = current.objectId;
 
-        const query = Bmob.Query('order_car')
-        query.set("parent", poiID)
-        query.set("product", poiID1)
-        query.set("number1", Number(that.data.number_jin))
-        query.set("total", price)
-        query.save().then(res => {
-          
-          wx.hideLoading();
-          setTimeout(function () { 
-             that.hidden();
+      const query = Bmob.Query("order_car");
+      query.equalTo("product", "==", id);
+      query.equalTo("parent", "==", userid);
+      query.find().then(res => {
+        if (res.length == 0) {
+          const pointer = Bmob.Pointer('_User')
+          const poiID = pointer.set(userid)
+          const pointer1 = Bmob.Pointer('products')
+          const poiID1 = pointer1.set(id)
+
+          const query = Bmob.Query('order_car')
+          query.set("parent", poiID)
+          query.set("product", poiID1)
+          query.set("number1", Number(that.data.number_jin))
+          query.set("total", price)
+          query.save().then(res => {
+
+            wx.hideLoading();
+            setTimeout(function () {
+              that.hidden();
               wx.showToast({
                 title: '添加成功',
                 icon: 'success',
                 duration: 1000
               });
             }, 800)
-        })
-      }else
-      {
-        var number1 = res[0].number1;
-        var total = (number1 + 1) * price;
-        const query = Bmob.Query('order_car');
-        query.get(res[0].objectId).then(res => {
-          console.log(res)
-          res.set('number1', number1 + Number(that.data.number_jin))
-          res.set("total", total)
-          res.save();
-          
-          wx.hideLoading();
-          setTimeout(function () { 
-            that.hidden();
-            wx.showToast({
-              title: '添加成功',
-              icon: 'success',
-              duration: 1000
-            });
-            },800)
-        }).catch(err => {
-          console.log(err)
-        })
-      }
-    });
+          })
+        } else {
+          var number1 = res[0].number1;
+          var total = (number1 + 1) * price;
+          const query = Bmob.Query('order_car');
+          query.get(res[0].objectId).then(res => {
+            console.log(res)
+            res.set('number1', number1 + Number(that.data.number_jin))
+            res.set("total", total)
+            res.save();
+
+            wx.hideLoading();
+            setTimeout(function () {
+              that.hidden();
+              wx.showToast({
+                title: '添加成功',
+                icon: 'success',
+                duration: 1000
+              });
+            }, 800)
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      });
+    }
+    
   },
 
   goto_category:function(e)

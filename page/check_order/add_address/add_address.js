@@ -89,9 +89,17 @@ Page({
   //添加新地址
   add_address:function()
   {
-    wx.navigateTo({
-      url: '../new_address/new_address',
-    })
+    let current = Bmob.User.current();
+
+    if (current.islogin == "false" || current.islogin == null) {
+      wx.showToast({ title: '请先登录', icon: "none" });
+    }else
+    {
+      wx.navigateTo({
+        url: '../new_address/new_address',
+      })
+    }
+   
   }
 
 })
