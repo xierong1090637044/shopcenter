@@ -76,6 +76,15 @@ Page({
   {
     that.setData({limit:that.data.limit+10});
     that.getorderlist();
+  },
+
+  //去到订单详情
+  goto_detail:function(e)
+  {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'detail/detail?id='+id,
+    })
   }
   
 })

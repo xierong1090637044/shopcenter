@@ -1,5 +1,5 @@
 <scroll-view class='content' style='display:{{have_order_dis}}' lower-threshold='50' bindscrolltolower="get_moreorders" scroll-y="true">
-  <view wx:for='{{orders}}' wx:key="{{index}}" class='order_list'> 
+  <view wx:for='{{orders}}' wx:key="{{index}}" class='order_list' data-id='{{item.objectId}}' bindtap='goto_detail'> 
     <view class='order_state'>
         <view>订单编号：{{item.objectId}}</view>
         <view>{{item.state}}</view>

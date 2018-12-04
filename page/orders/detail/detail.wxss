@@ -1,1 +1,52 @@
-/* page/orders/detail/detail.wxss */
+.content
+{
+  
+  text-align: center;
+  font-size: 16px;
+}
+.order-header
+{
+  padding: 20px 10px ;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.order-satte
+{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.order_item1
+{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.border
+{
+  border-bottom:1px solid#ddd;
+}
+
+.order-second
+{
+  padding: 0 10px;
+  background: #fff;
+  line-height: 35px;
+}
+.order_productlist
+{
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  line-height: 25px;
+}
+.order_extrapay
+{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.order_payinfor
+{
+  text-align: right;
+  font-size: 14px;
+}

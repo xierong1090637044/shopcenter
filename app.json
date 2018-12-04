@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "page/index/index",
     "page/personcenter/personcenter",
     "page/personcenter/about_us/about_us",

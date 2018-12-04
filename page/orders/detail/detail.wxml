@@ -1,2 +1,52 @@
-<!--page/orders/detail/detail.wxml-->
-<text>page/orders/detail/detail.wxml</text>
+<view class='content'>
+    <view class='order-header'>
+       <view class='order-satte'>{{detail.state}}</view>
+       <view style='font-size:12px'>感谢您的光临!</view>
+    </view>
+
+    <view class='order-second'>
+       <view class='order_item1'>
+          <view>订单编号：{{detail.objectId}}</view>
+          <view>{{detail.createdAt}}</view>
+        </view>
+
+       <view class='border'></view>
+
+       <view wx:for="{{detail.products_infor}}" wx:key="{{index}}" class='order_productlist'>
+          <view style='width:50%;font-weight:bold'>{{item.product.name}}</view>
+          <view>{{item.number1}}</view>
+          <view style='font-weight:bold'>￥{{item.total}}</view>
+       </view>
+
+       <view wx:if="{{detail.extra_pay !=null}}" class='order_extrapay'>
+          <view>配送费</view>
+          <view>￥{{detail.extra_pay}}</view>
+       </view>
+
+       <view class='border'></view>
+
+       <view class='order_payinfor'>
+        <text style='margin-right:10px'>共{{detail.products_infor.length}}商品</text>
+        <text>实付</text>
+        <text style='font-weight:bold'>￥{{detail.pay_for}}</text>
+       </view>
+    </view>
+
+    <view class='order-second' style='margin-top:10px;line-height:25px;padding:10px'>
+        <view class='order_item1'>
+          <view>收货地址</view>
+          <view style='text-align:right'>
+             <view>{{detail.address_desc}}</view>
+             <view>{{detail.address_person}}</view>
+          </view>
+        </view>
+    </view>
+
+    <view class='order-second' style='margin-top:10px' wx:if="{{detail.state == '已完成'}}">
+        <view class='order_item1'>
+          <view>送达时间</view>
+          <view>{{detail.updatedAt}}</view>
+        </view>
+    </view>
+
+</view>

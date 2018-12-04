@@ -1,18 +1,29 @@
-// page/orders/detail/detail.js
+var Bmob = require('../../../utils/bmob.js');
+var that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+    var id = options.id;
+    wx.showLoading({title: '加载中...'})
 
+    const query = Bmob.Query("orders");
+    query.get(id).then(res => {
+      console.log(res);
+      wx.hideLoading();
+      that.setData({detail:res});
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   /**
