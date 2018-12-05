@@ -1,5 +1,17 @@
 <!--page/category/category.wxml-->
 <view class='page'>
+
+  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+    <block wx:for="{{msgList}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="swiper_item">
+            <i class="iconfont icon-laba" style="color:#c43434"></i>
+            <text>{{item.title}}</text>
+          </view>
+        </swiper-item>
+    </block>
+  </swiper>
+
    <view class='cate_alllist'>
       <view class='cate_leftitems'>
           <view wx:for="{{leftitems}}" wx:key="{{index}}" class='{{select == item ? "addclass":""}}' bindtap='select' data-desc = "{{item}}">{{item}}</view>

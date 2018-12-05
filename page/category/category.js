@@ -14,6 +14,13 @@ Page({
     maskele: "none",
     number_jin: 1,
     animationData: '',
+
+    msgList: 
+    [
+      { url: "url", title: "欢迎光临本小店" },
+      { url: "url", title: "公告：优惠活动！优惠活动！优惠活动！优惠活动！" }
+    ]
+
   },
 
   /*** 生命周期函数--监听页面加载*/
