@@ -14,6 +14,7 @@ Page({
   onLoad: function (options) {
     that = this;
     that.getswiperimage();
+    that.get_cheapproductslist();
   },
 
   /**
@@ -25,7 +26,7 @@ Page({
 
   /*** 生命周期函数--监听页面显示*/
   onShow: function () {
-    that.getproductslist();
+    
   },
 
   /*** 生命周期函数--监听页面隐藏*/
@@ -64,13 +65,29 @@ Page({
     });
   },
 
+  //得到特价商品
+  get_cheapproductslist: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
+    const query_product = Bmob.Query("products");
+    query_product.equalTo("is_cheap", "==", true);
+    query_product.order("-offtake");
+    query_product.find().then(res => {
+      wx.hideLoading();
+      that.setData({ cheap_products: res });
+      that.getproductslist()
+    });
+  },
+
+  //得到推荐商品
   getproductslist:function(){
     wx.showLoading({
       title: '加载中...',
     });
     const query_product = Bmob.Query("products");
     query_product.equalTo("is_recommend", "==", true);
-    query_product.order("sort");
+    query_product.order("-offtake");
     query_product.find().then(res => {
       wx.hideLoading();
       that.setData({ products: res })
